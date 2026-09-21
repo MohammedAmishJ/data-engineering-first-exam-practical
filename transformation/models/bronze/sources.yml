@@ -1,0 +1,90 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw data ingested from the UCI Bank Marketing dataset using dlt."
+
+    tables:
+      - name: bank_marketing
+        description: "Raw UCI Bank Marketing dataset containing 45,211 records."
+
+        columns:
+          - name: age
+            description: "Client age."
+
+          - name: job
+            description: "Client job."
+
+          - name: marital
+            description: "Client marital status."
+
+          - name: education
+            description: "Client education level."
+
+          - name: default
+            description: "Whether the client has credit in default."
+
+          - name: balance
+            description: "Average yearly balance."
+
+          - name: housing
+            description: "Whether the client has a housing loan."
+
+          - name: loan
+            description: "Whether the client has a personal loan."
+
+          - name: day_of_week
+            description: "Day of the month of the last contact."
+
+          - name: month
+            description: "Month of the last contact."
+
+          - name: duration
+            description: "Duration of the last contact in seconds."
+
+          - name: campaign
+            description: "Number of contacts performed during the current campaign."
+
+          - name: pdays
+            description: "Number of days since the client was last contacted."
+
+          - name: previous
+            description: "Number of contacts performed before the current campaign."
+
+          - name: contact
+            description: "Contact communication type."
+
+          - name: poutcome
+            description: "Outcome of the previous marketing campaign."
+
+          - name: y
+            description: "Whether the client subscribed to a term deposit."
+
+models:
+  - name: stg_bank_marketing
+    description: "Bronze staging model for the UCI Bank Marketing dataset."
+
+    columns:
+      - name: age
+        description: "Client age."
+        data_tests:
+          - not_null
+
+      - name: balance
+        description: "Average yearly balance."
+        data_tests:
+          - not_null
+
+      - name: campaign
+        description: "Number of contacts during the current campaign."
+        data_tests:
+          - not_null
+
+      - name: y
+        description: "Whether the client subscribed to a term deposit."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["yes", "no"]
