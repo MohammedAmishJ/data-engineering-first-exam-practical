@@ -550,6 +550,20 @@ Examples include:
 9. Row count remains consistent.
 10. Duplicate records are detected using a window function.
 
+## Data Quality Test Cases
+
+| Test Case | Input | Expected | Actual |
+|---|---|---|---|
+| Required fields | Raw Bank Marketing records | Required fields contain no nulls | Passed |
+| Target values | `y` column | Only `yes` or `no` | Passed |
+| Age range | `age` column | Values between 18 and 100 | Passed |
+| Numeric ranges | `duration`, `campaign`, `pdays`, `previous` | Values satisfy defined ranges | Passed |
+| Subscription consistency | `y` and `subscribed` | Values must agree | Passed |
+| Previous-contact consistency | `pdays` and `previously_contacted` | Values must agree | Passed |
+| Text normalization | Categorical columns | Trimmed and lowercase | Passed |
+| Duplicate detection | All semantic source fields | 0 duplicate records | 0 duplicates |
+| Row count | Raw vs Silver | 45,211 records preserved | 45,211 |
+
 ---
 
 # Reproducibility
