@@ -1,0 +1,138 @@
+version: 2
+
+models:
+  - name: int_bank_marketing
+    description: >
+      Silver layer for the UCI Bank Marketing dataset.
+      Applies type casting, categorical text normalization,
+      missing-value handling, and derived fields.
+
+    columns:
+      - name: age
+        description: "Client age in years."
+        data_tests:
+          - not_null
+
+      - name: job
+        description: "Normalized client job. Empty values are represented as unknown."
+        data_tests:
+          - not_null
+
+      - name: marital
+        description: "Normalized client marital status."
+        data_tests:
+          - not_null
+
+      - name: education
+        description: "Normalized client education level. Empty values are represented as unknown."
+        data_tests:
+          - not_null
+
+      - name: has_default
+        description: "Whether the client has credit in default."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["yes", "no", "unknown"]
+
+      - name: balance
+        description: "Client average yearly balance."
+        data_tests:
+          - not_null
+
+      - name: housing
+        description: "Whether the client has a housing loan."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["yes", "no", "unknown"]
+
+      - name: loan
+        description: "Whether the client has a personal loan."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["yes", "no", "unknown"]
+
+      - name: day_of_week
+        description: "Day number associated with the last contact."
+
+      - name: month
+        description: "Month of the last contact."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - jan
+                  - feb
+                  - mar
+                  - apr
+                  - may
+                  - jun
+                  - jul
+                  - aug
+                  - sep
+                  - oct
+                  - nov
+                  - dec
+
+      - name: duration
+        description: "Duration of the last contact in seconds."
+        data_tests:
+          - not_null
+
+      - name: duration_minutes
+        description: "Duration of the last contact converted from seconds to minutes."
+        data_tests:
+          - not_null
+
+      - name: campaign
+        description: "Number of contacts performed during the current campaign."
+        data_tests:
+          - not_null
+
+      - name: pdays
+        description: >
+          Number of days since the client was previously contacted.
+          A value of -1 means the client was not previously contacted.
+        data_tests:
+          - not_null
+
+      - name: previous
+        description: "Number of contacts performed before the current campaign."
+        data_tests:
+          - not_null
+
+      - name: contact
+        description: "Normalized communication type. Empty values are represented as unknown."
+        data_tests:
+          - not_null
+
+      - name: poutcome
+        description: "Normalized outcome of the previous campaign."
+        data_tests:
+          - not_null
+
+      - name: subscription_status
+        description: "Normalized original subscription target."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["yes", "no"]
+
+      - name: subscribed
+        description: "Boolean representation of the subscription status."
+        data_tests:
+          - not_null
+
+      - name: previously_contacted
+        description: >
+          Indicates whether the client had been contacted previously.
+          Derived from pdays, where -1 means false.
+        data_tests:
+          - not_null
