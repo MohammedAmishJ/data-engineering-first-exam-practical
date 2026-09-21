@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: mart_bank_campaign_performance
+    description: >
+      Gold analysis model summarizing Bank Marketing campaign performance
+      by job, month, and contact method.
+
+    columns:
+      - name: job
+        description: "Client job category."
+        data_tests:
+          - not_null
+
+      - name: month
+        description: "Month of the last contact."
+        data_tests:
+          - not_null
+
+      - name: contact
+        description: "Communication method used for the contact."
+        data_tests:
+          - not_null
+
+      - name: total_clients
+        description: "Number of clients in the group."
+        data_tests:
+          - not_null
+
+      - name: subscribed_clients
+        description: "Number of clients who subscribed."
+        data_tests:
+          - not_null
+
+      - name: subscription_rate
+        description: "Percentage of clients who subscribed."
+        data_tests:
+          - not_null
+
+      - name: average_balance
+        description: "Average client balance."
+        data_tests:
+          - not_null
+
+      - name: average_duration_minutes
+        description: "Average contact duration in minutes."
+        data_tests:
+          - not_null
+
+      - name: average_campaign_contacts
+        description: "Average number of contacts during the campaign."
+        data_tests:
+          - not_null
+  
+  - name: mart_bank_customer_profile
+    description: >
+      Gold analysis model summarizing customer characteristics
+      and subscription outcomes by job and marital status.
+
+    columns:
+      - name: job
+        description: "Client job category."
+        data_tests:
+          - not_null
+
+      - name: marital
+        description: "Client marital status."
+        data_tests:
+          - not_null
+
+      - name: total_clients
+        description: "Number of clients in the group."
+        data_tests:
+          - not_null
+
+      - name: subscribed_clients
+        description: "Number of clients who subscribed."
+        data_tests:
+          - not_null
+
+      - name: subscription_rate
+        description: "Percentage of clients who subscribed."
+        data_tests:
+          - not_null
+
+      - name: average_age
+        description: "Average age of clients in the group."
+        data_tests:
+          - not_null
+
+      - name: average_balance
+        description: "Average balance of clients in the group."
+        data_tests:
+          - not_null
